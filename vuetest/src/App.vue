@@ -2,13 +2,13 @@
   <div id="app">
   <el-container style="height: 500px; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-    <el-menu :default-openeds="['1']">
+    <el-menu :default-openeds="['1']" router>
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-menu"></i>Your Actions</template>
-          <el-menu-item index="1-1" default-active="true" >Account</el-menu-item>
-          <el-menu-item index="1-2">Expenses</el-menu-item>
-          <el-menu-item index="1-3">Incomes</el-menu-item>
-        <el-menu-item index="1-4">Budget</el-menu-item>
+          <el-menu-item index="account" default-active="true" >Account</el-menu-item>
+          <el-menu-item index="expense">Expenses</el-menu-item>
+          <el-menu-item index="income">Incomes</el-menu-item>
+        <el-menu-item index="budget">Budget</el-menu-item>
       </el-submenu>
 <!--      <el-submenu index="2">-->
 <!--        <template slot="title"><i class="el-icon-menu"></i>Navigator Two</template>-->
@@ -57,23 +57,24 @@
     </el-header>
 
     <el-main>
-      <el-table :data="tableData">
-        <el-table-column prop="date" label="Date" width="140">
-        </el-table-column>
-        <el-table-column prop="account" label="Account" width="120">
-        </el-table-column>
+      <router-view/>
+<!--      <el-table :data="tableData">-->
+<!--        <el-table-column prop="date" label="Date" width="140">-->
+<!--        </el-table-column>-->
+<!--        <el-table-column prop="account" label="Account" width="120">-->
+<!--        </el-table-column>-->
 
-        <el-table-column prop="type" label="Type" width="100">
-        </el-table-column>
-        <el-table-column prop="amount" label="Amount" width="120">
-          <template scope="scope">
-          <span v-if="scope.row.amount > 0" style="color: crimson">{{scope.row.amount}}</span>
-          <span v-if="scope.row.amount < 0 " style="color: #42b983;">{{scope.row.amount}}</span>
-            </template>
-          </el-table-column>
-        <el-table-column prop="balance" label="Balance">
-        </el-table-column>
-      </el-table>
+<!--        <el-table-column prop="type" label="Type" width="100">-->
+<!--        </el-table-column>-->
+<!--        <el-table-column prop="amount" label="Amount" width="120">-->
+<!--          <template scope="scope">-->
+<!--          <span v-if="scope.row.amount > 0" style="color: crimson">{{scope.row.amount}}</span>-->
+<!--          <span v-if="scope.row.amount < 0 " style="color: #42b983;">{{scope.row.amount}}</span>-->
+<!--            </template>-->
+<!--          </el-table-column>-->
+<!--        <el-table-column prop="balance" label="Balance">-->
+<!--        </el-table-column>-->
+<!--      </el-table>-->
     </el-main>
   </el-container>
 </el-container>
