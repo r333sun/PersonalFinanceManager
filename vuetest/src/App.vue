@@ -5,7 +5,7 @@
     <el-menu :default-openeds="['1']" router>
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-menu"></i>Your Actions</template>
-          <el-menu-item index="account" default-active="true" >Account</el-menu-item>
+          <el-menu-item index="account">Account</el-menu-item>
           <el-menu-item index="expense">Expenses</el-menu-item>
           <el-menu-item index="income">Incomes</el-menu-item>
         <el-menu-item index="budget">Budget</el-menu-item>

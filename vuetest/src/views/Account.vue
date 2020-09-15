@@ -1,26 +1,50 @@
 <template>
    <div>
-       <el-table :data="tableData">
-        <el-table-column prop="date" label="Date" width="140">
-        </el-table-column>
-        <el-table-column prop="account" label="Account" width="120">
-        </el-table-column>
-
-        <el-table-column prop="type" label="Type" width="100">
-        </el-table-column>
-        <el-table-column prop="amount" label="Amount" width="120">
-          <template scope="scope">
-          <span v-if="scope.row.amount > 0" style="color: crimson">{{scope.row.amount}}</span>
-          <span v-if="scope.row.amount < 0 " style="color: #42b983;">{{scope.row.amount}}</span>
-            </template>
-          </el-table-column>
-        <el-table-column prop="balance" label="Balance">
-        </el-table-column>
-      </el-table>
+       <el-table
+    :data="tableData"
+    style="width: 100%">
+    <el-table-column
+      fixed
+      prop="date"
+      label="Date"
+      width="150">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="Name"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="state"
+      label="State"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="city"
+      label="City"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="address"
+      label="Address"
+      width="300">
+    </el-table-column>
+    <el-table-column
+      prop="zip"
+      label="Zip"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      label="Operations"
+      width="120">
+      <template slot-scope="scope">
+        <el-button @click="handleClick" type="text" size="small">Detail</el-button>
+        <el-button type="text" size="small">Edit</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
        <br>
-       <button router>
-           back to Main
-       </button>
+       <el-button type="main" plain @click="backToMain">back to main</el-button>
    </div>
 </template>
 
@@ -38,29 +62,53 @@
 
 <script>
   export default {
-    data() {
-      // const item = {
-      //   date: '2016-05-02',
-      //   account: 'Citi Debit',
-      //   type: 'Income',
-      //   amount:"1000.0"
-      // };
+     data() {
       return {
         tableData: [{
+          date: '2016-05-03',
+          name: 'Tom',
+          state: 'California',
+          city: 'Los Angeles',
+          address: 'No. 189, Grove St, Los Angeles',
+          zip: 'CA 90036',
+          tag: 'Home'
+        }, {
           date: '2016-05-02',
-          account: 'Citi Debit',
-          type: 'Income',
-          amount:"1000.0",
-          balance:"2000.0"
-        },
-        {
-          date: '2016-05-02',
-          account: 'Citi Debit',
-          type: 'Expense',
-          amount:"-1000.0",
-          balance:"2000.0"
-        }]
+          name: 'Tom',
+          state: 'California',
+          city: 'Los Angeles',
+          address: 'No. 189, Grove St, Los Angeles',
+          zip: 'CA 90036',
+          tag: 'Office'
+        }, {
+          date: '2016-05-04',
+          name: 'Tom',
+          state: 'California',
+          city: 'Los Angeles',
+          address: 'No. 189, Grove St, Los Angeles',
+          zip: 'CA 90036',
+          tag: 'Home'
+        }, {
+          date: '2016-05-01',
+          name: 'Tom',
+          state: 'California',
+          city: 'Los Angeles',
+          address: 'No. 189, Grove St, Los Angeles',
+          zip: 'CA 90036',
+          tag: 'Office'
+        }],
+        search: '',
       }
-    }
+    },
+      methods:{
+        backToMain(){
+            this.$router.push("/")
+        },
+        handleClick() {
+        console.log('click');
+      },
+      },
+      created() {
+      }
   };
 </script>
