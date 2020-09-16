@@ -6,6 +6,9 @@ import Income from '../views/Income.vue'
 import Expense from '../views/Expense.vue'
 import Budget from '../views/Budget.vue'
 import Main from '../views/Main'
+import AddAccount from "../views/AddAccount";
+import AddExpense from "../views/AddExpense";
+import AddCategory from "../views/AddCategory";
 
 Vue.use(VueRouter)
 
@@ -47,6 +50,21 @@ const routes = [
     path:"/budget",
     name:"Budget",
     component:Budget
+  },
+  {
+    path:"/addAccount",
+    name:"AddAccount",
+    component:AddAccount
+  },
+    {
+    path:"/addExpense",
+    name:"AddExpense",
+    component:AddExpense
+  },
+    {
+    path:"/category",
+    name:"AddCategory",
+    component:AddCategory
   }
 ]
 
