@@ -9,6 +9,8 @@ import Main from '../views/Main'
 import AddAccount from "../views/AddAccount";
 import AddExpense from "../views/AddExpense";
 import AddCategory from "../views/AddCategory";
+import AddBudget from "../views/AddBudget";
+import AddIncome from "../views/AddIncome";
 
 Vue.use(VueRouter)
 
@@ -65,7 +67,18 @@ const routes = [
     path:"/category",
     name:"AddCategory",
     component:AddCategory
+  },
+  {
+    path:"/addBudget",
+    name:"AddBudget",
+    component:AddBudget
+  },
+  {
+    path:"/addIncome",
+    name:"AddIncome",
+    component:AddIncome
   }
+
 ]
 
 const router = new VueRouter({

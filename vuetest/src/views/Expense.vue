@@ -30,6 +30,16 @@
                     width="120">
             </el-table-column>
             <el-table-column
+                    prop="payee"
+                    label="Payee"
+                    width="120">
+            </el-table-column>
+            <el-table-column
+                    prop="note"
+                    label="Note"
+                    width="120">
+            </el-table-column>
+            <el-table-column
                     label="Operations"
                     width="200">
                 <template slot-scope="scope">
@@ -45,10 +55,21 @@
                                 <el-button type="text" @click="addCategory">Manage Category</el-button>
                             </el-form-item>
                             <el-form-item label="Date" :label-width="formLabelWidth">
-                                <el-input v-model="form.date" autocomplete="off"></el-input>
+                                <!--                                <el-input v-model="form.date" autocomplete="off"></el-input>-->
+                                <el-date-picker
+                                        v-model="form.date"
+                                        type="date"
+                                        placeholder="Pick a day">
+                                </el-date-picker>
                             </el-form-item>
                             <el-form-item label="Amount" :label-width="formLabelWidth">
                                 <el-input v-model="form.amount" autocomplete="off"></el-input>
+                            </el-form-item>
+                            <el-form-item label="Payee" :label-width="formLabelWidth">
+                                <el-input v-model="form.payee" autocomplete="off"></el-input>
+                            </el-form-item>
+                            <el-form-item label="Note" :label-width="formLabelWidth">
+                                <el-input v-model="form.note" autocomplete="off"></el-input>
                             </el-form-item>
                         </el-form>
                         <span slot="footer" class="dialog-footer">
@@ -86,6 +107,7 @@
 
 <script>
     export default {
+        name:"Expense",
         data() {
             return {
                 tableData: [{
@@ -94,19 +116,25 @@
                     subcategory: 'Rent',
                     date: '2020-07-08',
                     amount: '1000',
+                    payee:"John Doe",
+                    note:'rent for July'
                 }, {
                     account: '0001',
                     category: 'Shopping',
                     subcategory: 'Clothes',
                     date: '2020-07-08',
                     amount: '1000',
+                    payee:'Mall',
+                    note:'Shopping the next season'
                 }],
                 dialogFormVisible: false,
                 form: {
                     account: '',
-                    name: '',
-                    type: '',
-                    currency: '',
+                    category: '',
+                    date: '',
+                    amount: '',
+                    payee:'',
+                    note:'',
                 },
                 options: [{
                     value: 'shopping',
@@ -170,6 +198,9 @@
             },
             show() {
                 alert("hello")
+            },
+            addCategory() {
+                this.$router.push("/Category");
             }
         },
     };

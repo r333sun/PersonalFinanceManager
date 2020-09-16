@@ -61,7 +61,6 @@
     <el-button type="primary" @click="submitForm1">Confirm</el-button>
   </span>
                     </el-dialog>
-        <el-button @click="addExpense">Back Adding Expense</el-button>
     </div>
 </template>
 
@@ -95,9 +94,6 @@
             }
         },
         methods: {
-            addExpense() {
-                this.$router.push("/addExpense")
-            },
             handleEdit(index, row) {
                 this.dialogFormVisible = true;
                 console.log(index, row);
