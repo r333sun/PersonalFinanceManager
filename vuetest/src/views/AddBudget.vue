@@ -5,10 +5,10 @@
                 <el-cascader :options="options" v-model="ruleForm.category"></el-cascader>
                 <el-button type="text" @click="addCategory">Manage Category</el-button>
             </el-form-item>
-            <el-form-item label="Date" prop="date">
+            <el-form-item label="Date" prop="startdate">
                 <!--                <el-input v-model="ruleForm.date"></el-input>-->
                   <el-date-picker
-                                        v-model="ruleForm.date"
+                                        v-model="ruleForm.startdate"
                                         type="daterange"
                                         range-separator="To"
                                         start-placeholder="Start date"
@@ -33,15 +33,17 @@
             return {
                 ruleForm: {
                     category: '',
-                    date: '',
+                    subcategory:'',
+                    startdate: '',
+                    enddate:'',
                     amount: '',
                 },
                 rules: {
                     category: [
                         {required: true, message: 'Please select the category', trigger: 'blur'}
                     ],
-                    date: [
-                        {required: true, message: 'Please enter the date of the expense', trigger: 'change'}
+                    startdate: [
+                        {required: true, message: 'Please enter the date range of the budget', trigger: 'change'}
                     ],
                     amount: [
                         {required: true, message: 'Please enter the amount', trigger: 'change'}
@@ -90,6 +92,10 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         alert("Add Successfully!")
+                        this.ruleForm.subcategory = this.ruleForm.category[1];
+                        this.ruleForm.category = this.ruleForm.category[0];
+                        this.ruleForm.enddate = this.ruleForm.startdate[1];
+                        this.ruleForm.startdate = this.ruleForm.startdate[0];
                         console.log(this.ruleForm);
                         this.$router.push("/budget");
 

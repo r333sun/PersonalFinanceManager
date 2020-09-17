@@ -51,7 +51,7 @@
                             <el-form-item label="Date" :label-width="formLabelWidth">
                                 <!--                                <el-input v-model="form.date" autocomplete="off"></el-input>-->
                                 <el-date-picker
-                                        v-model="form.date"
+                                        v-model="form.startdate"
                                         type="daterange"
                                         range-separator="To"
                                         start-placeholder="Start date"
@@ -120,7 +120,9 @@
                 form: {
                     account: '',
                     category: '',
-                    date: '',
+                    subcategory:'',
+                    startdate: '',
+                    enddate:'',
                     amount: '',
                 },
                 options: [{
@@ -172,6 +174,10 @@
             },
             submitForm() {
                 this.dialogFormVisible = false;
+                this.form.subcategory = this.form.category[1];
+                this.form.category = this.form.category[0];
+                this.form.enddate = this.form.startdate[1];
+                this.form.startdate = this.form.startdate[0];
                 console.log(this.form);
                 alert("Budget Updated");
                 this.$router.push("/budget");

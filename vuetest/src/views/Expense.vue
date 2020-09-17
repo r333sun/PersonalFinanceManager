@@ -131,6 +131,7 @@
                 form: {
                     account: '',
                     category: '',
+                    subcategory:'',
                     date: '',
                     amount: '',
                     payee:'',
@@ -188,6 +189,8 @@
             },
             submitForm() {
                 this.dialogFormVisible = false;
+                this.form.subcategory = this.form.category[1];
+                this.form.category = this.form.category[0];
                 console.log(this.form);
                 alert("Expense Updated");
                 this.$router.push("/expense");

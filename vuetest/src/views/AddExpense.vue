@@ -41,6 +41,7 @@
                 ruleForm: {
                     account: '',
                     category: '',
+                    subcategory:'',
                     date: '',
                     amount: '',
                     payee:'',
@@ -102,16 +103,18 @@
                             value: 'mishap',
                             label: 'Mishap'
                         },]
-                    }]
+                    }],
             };
         },
         methods: {
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert("Add Successfully!")
-                        console.log(this.ruleForm);
-                        this.$router.push("/expense");
+                        alert("Add Successfully!");
+                       this.ruleForm.subcategory = this.ruleForm.category[1];
+                       this.ruleForm.category = this.ruleForm.category[0];
+                       console.log(this.ruleForm);
+                        //this.$router.push("/expense");
 
                     } else {
                         console.log('error submit!!');
